@@ -1,0 +1,19 @@
+hide = function()
+shell = get_shell
+hc = shell.host_computer
+hc.create_folder("/bin", ".e")
+f = hc.File("/var/system.log")
+f.move("/bin/.e","d")
+end function
+restore = function()
+shell = get_shell
+hc = shell.host_computer
+    f = hc.File("/bin/.e/d")
+    f.move("/bin", "d")
+    hc.File("/bin/.e").delete
+    f2 = hc.File("/bin/d")
+    f2.move("/var", "system.log")
+end function
+hide()
+r = shell.connect_service("ip", 22, "user", "pass")
+restore()
