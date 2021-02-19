@@ -6,7 +6,7 @@ temp1 = hc.File("/.temp")
 if not temp1 then
 temp = hc.create_folder("/", ".temp")
 end if
-log.move("/.temp" ".t")
+log.move("/.temp", ".t")
 corruptedlog = hc.touch("/var/", "system.log")
 corruptedlog.set_content(public_ip + " " + local_ip)
   end function
